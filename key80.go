@@ -1,5 +1,6 @@
 package present
 
+// key80 implements the PRESENT key schedule for 80-bit keys.
 type key80 struct {
 	A, B uint64
 }
@@ -47,6 +48,7 @@ func (k *key80) roundKey() uint64 {
 	return k.A
 }
 
+// newKey80 returns a new 80-bit PRESENT key register from the provided key bytes.
 func newKey80(key []byte) *key80 {
 	A, B := decompose(key)
 	return &key80{A, B}

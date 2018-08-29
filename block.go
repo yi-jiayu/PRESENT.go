@@ -4,9 +4,12 @@ import (
 	"encoding/binary"
 )
 
-const blockSize = 8
+// The PRESENT block size in bytes.
+const BlockSize = 8
+
 const numRounds = 31
 
+// Substitution and permutation tables for PRESENT.
 var (
 	sBox    = []byte{0xC, 5, 6, 0xB, 9, 0, 0xA, 0xD, 3, 0xE, 0xF, 8, 4, 7, 1, 2}
 	sBoxInv = []byte{5, 0xE, 0xF, 8, 0xC, 1, 2, 0xD, 0xB, 4, 6, 3, 0, 7, 9, 0xA}
@@ -27,7 +30,7 @@ type block struct {
 }
 
 func (b *block) BlockSize() int {
-	return blockSize
+	return BlockSize
 }
 
 func (b *block) Encrypt(dst, src []byte) {

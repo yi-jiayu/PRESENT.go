@@ -1,3 +1,8 @@
+// Package present implements the ultra-lightweight block cipher PRESENT as defined by Bogdanov et al. [1].
+//
+// 1. Bogdanov A. et al. (2007) PRESENT: An Ultra-Lightweight Block Cipher.
+// In: Paillier P., Verbauwhede I. (eds) Cryptographic Hardware and Embedded Systems - CHES 2007.
+// CHES 2007. Lecture Notes in Computer Science, vol 4727. Springer, Berlin, Heidelberg
 package present
 
 import (
