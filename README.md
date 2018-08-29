@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/yi-jiayu/present"
+	"github.com/yi-jiayu/PRESENT.go"
 )
 
 func encodeHex(data []byte) string {

@@ -2,9 +2,10 @@ package present_test
 
 import (
 	"encoding/hex"
-	"github.com/stretchr/testify/assert"
-	"github.com/yi-jiayu/present"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/yi-jiayu/PRESENT.go"
 )
 
 var cases = []struct {
