@@ -34,6 +34,12 @@ func (b *block) BlockSize() int {
 }
 
 func (b *block) Encrypt(dst, src []byte) {
+	if len(src) < BlockSize {
+		panic("present: input not full block")
+	}
+	if len(dst) < BlockSize {
+		panic("present: output not full block")
+	}
 	state := binary.BigEndian.Uint64(src)
 	roundKeys := make(chan uint64, numRounds+1)
 	go expandKey(b.Key, roundKeys)
@@ -49,6 +55,12 @@ func (b *block) Encrypt(dst, src []byte) {
 }
 
 func (b *block) Decrypt(dst, src []byte) {
+	if len(src) < BlockSize {
+		panic("present: input not full block")
+	}
+	if len(dst) < BlockSize {
+		panic("present: output not full block")
+	}
 	c := make(chan uint64)
 	go expandKey(b.Key, c)
 	var roundKeys []uint64
