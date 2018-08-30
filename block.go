@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 )
 
-// The PRESENT block size in bytes.
+// BlockSize is the PRESENT block size in bytes.
 const BlockSize = 8
 
 const numRounds = 31

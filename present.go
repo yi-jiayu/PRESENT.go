@@ -10,6 +10,7 @@ import (
 	"strconv"
 )
 
+// KeySizeError represents an invalid PRESENT key length.
 type KeySizeError int
 
 func (k KeySizeError) Error() string {
