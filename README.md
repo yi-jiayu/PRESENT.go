@@ -2,6 +2,7 @@
 [![GoDoc](https://godoc.org/github.com/yi-jiayu/PRESENT.go?status.svg)](https://godoc.org/github.com/yi-jiayu/PRESENT.go)
 [![Build Status](https://travis-ci.com/yi-jiayu/PRESENT.go.svg?branch=master)](https://travis-ci.com/yi-jiayu/PRESENT.go)
 [![codecov](https://codecov.io/gh/yi-jiayu/PRESENT.go/branch/master/graph/badge.svg)](https://codecov.io/gh/yi-jiayu/PRESENT.go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/yi-jiayu/PRESENT.go)](https://goreportcard.com/report/github.com/yi-jiayu/PRESENT.go)
 
 Go implementation of the PRESENT ultra-lightweight block cipher as defined by Bogdanov et al. [1].
 
