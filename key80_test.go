@@ -7,8 +7,6 @@ import (
 )
 
 func Test_key80_rotate(t *testing.T) {
-	t.Parallel()
-
 	k := &key80{
 		A: 0xc,
 	}
@@ -21,8 +19,6 @@ func Test_key80_rotate(t *testing.T) {
 }
 
 func Test_key80_update(t *testing.T) {
-	t.Parallel()
-
 	k := &key80{}
 	updateKey(k, 1)
 	expected := key80{

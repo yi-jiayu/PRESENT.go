@@ -7,8 +7,6 @@ import (
 )
 
 func Test_sBoxLayer(t *testing.T) {
-	t.Parallel()
-
 	t.Run("s box layer", func(t *testing.T) {
 		var state uint64 = 0x123456789abcdef
 		var expected uint64 = 0xc56b90ad3ef84712
@@ -28,8 +26,6 @@ func Test_sBoxLayer(t *testing.T) {
 }
 
 func Test_pLayer(t *testing.T) {
-	t.Parallel()
-
 	t.Run("p layer", func(t *testing.T) {
 		var state uint64 = 0xaaaaaaaaaaaaaaaa
 		var expected uint64 = 0xffff0000ffff0000

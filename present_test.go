@@ -50,8 +50,6 @@ func decodeHex(s string) []byte {
 }
 
 func TestNewCipher(t *testing.T) {
-	t.Parallel()
-
 	t.Run("invalid key size", func(t *testing.T) {
 		var key []byte
 		_, err := present.NewCipher(key)
@@ -64,8 +62,6 @@ func TestNewCipher(t *testing.T) {
 }
 
 func TestBlock_Encrypt(t *testing.T) {
-	t.Parallel()
-
 	for _, c := range cases {
 		t.Run(fmt.Sprintf("%d-bit key", len(c.Key)*4), func(t *testing.T) {
 			key := decodeHex(c.Key)
@@ -85,8 +81,6 @@ func TestBlock_Encrypt(t *testing.T) {
 }
 
 func TestBlock_Decrypt(t *testing.T) {
-	t.Parallel()
-
 	for _, c := range cases {
 		t.Run(fmt.Sprintf("%d-bit key", len(c.Key)*4), func(t *testing.T) {
 			key := decodeHex(c.Key)
