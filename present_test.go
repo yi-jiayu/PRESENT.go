@@ -2,6 +2,7 @@ package present_test
 
 import (
 	"encoding/hex"
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -30,6 +31,11 @@ var cases = []struct {
 		Key:        "FFFFFFFFFFFFFFFFFFFF",
 		Plaintext:  "FFFFFFFFFFFFFFFF",
 		Ciphertext: "3333DCD3213210D2",
+	}, {
+		// test vector for 128-bit key from pypresent.py
+		Key:        "0123456789abcdef0123456789abcdef",
+		Plaintext:  "0123456789abcdef",
+		Ciphertext: "0e9d28685e671dd6",
 	},
 }
 
@@ -61,18 +67,20 @@ func TestBlock_Encrypt(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range cases {
-		key := decodeHex(c.Key)
-		cipher, err := present.NewCipher(key)
-		if err != nil {
-			t.Fatal(err)
-		}
+		t.Run(fmt.Sprintf("%d-bit key", len(c.Key)*4), func(t *testing.T) {
+			key := decodeHex(c.Key)
+			cipher, err := present.NewCipher(key)
+			if err != nil {
+				t.Fatal(err)
+			}
 
-		plaintext := decodeHex(c.Plaintext)
-		dst := make([]byte, cipher.BlockSize())
-		cipher.Encrypt(dst, plaintext)
+			plaintext := decodeHex(c.Plaintext)
+			dst := make([]byte, cipher.BlockSize())
+			cipher.Encrypt(dst, plaintext)
 
-		ciphertext := decodeHex(c.Ciphertext)
-		assert.Equal(t, ciphertext, dst)
+			ciphertext := decodeHex(c.Ciphertext)
+			assert.Equal(t, ciphertext, dst)
+		})
 	}
 }
 
@@ -80,17 +88,19 @@ func TestBlock_Decrypt(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range cases {
-		key := decodeHex(c.Key)
-		cipher, err := present.NewCipher(key)
-		if err != nil {
-			t.Fatal(err)
-		}
+		t.Run(fmt.Sprintf("%d-bit key", len(c.Key)*4), func(t *testing.T) {
+			key := decodeHex(c.Key)
+			cipher, err := present.NewCipher(key)
+			if err != nil {
+				t.Fatal(err)
+			}
 
-		ciphertext := decodeHex(c.Ciphertext)
-		dst := make([]byte, cipher.BlockSize())
-		cipher.Decrypt(dst, ciphertext)
+			ciphertext := decodeHex(c.Ciphertext)
+			dst := make([]byte, cipher.BlockSize())
+			cipher.Decrypt(dst, ciphertext)
 
-		plaintext := decodeHex(c.Plaintext)
-		assert.Equal(t, plaintext, dst)
+			plaintext := decodeHex(c.Plaintext)
+			assert.Equal(t, plaintext, dst)
+		})
 	}
 }
